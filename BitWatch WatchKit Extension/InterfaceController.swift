@@ -17,11 +17,15 @@ class InterfaceController: WKInterfaceController {
     var updating = false
 
     @IBOutlet weak var priceLabel: WKInterfaceLabel!
+    @IBOutlet weak var image: WKInterfaceImage!
+    @IBOutlet weak var lastUpdatedLabel: WKInterfaceLabel!
     
     override init(context: AnyObject?) {
         // Initialize variables here.
         super.init(context: context)
         updatePrice(tracker.cachedPrice())
+        image.setHidden(true)
+        updateDate(tracker.cachedDate())
         
         // Configure interface objects here.
         NSLog("%@ init", self)
@@ -56,9 +60,28 @@ class InterfaceController: WKInterfaceController {
             tracker.requestPrice { (price, error) -> () in
                 if error == nil {
                     self.updatePrice(price!)
+                    self.updateDate(NSDate())
+                    self.updateImage(originalPrice, newPrice: price!)
                 }
                 self.updating = false
             }
+        }
+    }
+    
+    private func updateDate(date: NSDate) {
+        self.lastUpdatedLabel.setText("Last updated \(Tracker.dateFormatter.stringFromDate(date))")
+    }
+    
+    private func updateImage(originalPrice: NSNumber, newPrice: NSNumber) {
+        if originalPrice.isEqualToNumber(newPrice) {
+            image.setHidden(true)
+        } else {
+            if newPrice.doubleValue > originalPrice.doubleValue {
+                image.setImageNamed("Up")
+            } else {
+                image.setImageNamed("Down")
+            }
+            image.setHidden(false)
         }
     }
 }

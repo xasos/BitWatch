@@ -13,14 +13,24 @@
                         <label alignment="center" text="$0.00" textAlignment="center" id="s5b-cL-LZf">
                             <fontDescription key="font" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="30"/>
                         </label>
+                        <group width="1" alignment="left" hasDetent="YES" id="SEP-5Z-lqG">
+                            <items>
+                                <imageView width="32" height="32" alignment="center" verticalAlignment="center" image="Down" id="KPY-UH-DOE"/>
+                                <label alignment="center" verticalAlignment="center" text="1 BTC" id="NyB-mU-m21">
+                                    <fontDescription key="font" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
+                                </label>
+                            </items>
+                        </group>
+                        <label alignment="center" verticalAlignment="bottom" text="Last Updated" textAlignment="center" id="p07-Pb-QeY">
+                            <fontDescription key="font" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                        </label>
                         <button width="1" alignment="center" verticalAlignment="bottom" title="Refresh" id="U2c-9v-aA9">
                             <fontDescription key="font" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
-                            <connections>
-                                <action selector="refreshTapped" destination="AgC-eL-Hgc" id="LzV-fb-Un4"/>
-                            </connections>
                         </button>
                     </items>
                     <connections>
+                        <outlet property="image" destination="KPY-UH-DOE" id="gP1-4l-8Gn"/>
+                        <outlet property="lastUpdatedLabel" destination="p07-Pb-QeY" id="OOD-He-A8O"/>
                         <outlet property="priceLabel" destination="s5b-cL-LZf" id="nbN-Be-OdJ"/>
                     </connections>
                 </controller>
