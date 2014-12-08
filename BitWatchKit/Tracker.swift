@@ -14,7 +14,7 @@ public class Tracker {
   
   let defaults = NSUserDefaults.standardUserDefaults()
   let session: NSURLSession
-  let URL = "https://api.bitcoinaverage.com/ticker/USD"
+  let URL = "https://www.bitstamp.net/api/ticker/"
   
   public class var dateFormatter: NSDateFormatter {
     struct DateFormatter {
